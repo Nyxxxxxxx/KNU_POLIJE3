@@ -9,10 +9,10 @@
     <form action="{{ url_for('register') }}" method="POST">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required><br>
-        <label for="fingerprint_data">Fingerprint Data:</label>
-        <input type="text" id="fingerprint_data" name="fingerprint_data" required><br>
-        <label for="face_data">Face Data:</label>
-        <input type="text" id="face_data" name="face_data" required><br>
+        <label for="school_id">School ID:</label>
+        <input type="text" id="school_id" name="school_id" required><br>
+        <label for="phone_number">Phone Number:</label>
+        <input type="text" id="phone_number" name="phone_number" required><br>
         <button type="submit">Register</button>
     </form>
     <a href="{{ url_for('index') }}">Back to Home</a>
