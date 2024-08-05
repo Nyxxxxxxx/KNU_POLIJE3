@@ -1,4 +1,5 @@
 import mysql.connector
+from database import get_db_connection
 
 def get_db_connection():
     connection = mysql.connector.connect(
