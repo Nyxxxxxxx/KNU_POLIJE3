@@ -2,19 +2,10 @@ from flask import Flask, request, render_template, redirect, url_for, session
 import mysql.connector
 from datetime import datetime
 from backend.registerController import register_student
+from database import get_db_connection
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
-
-# Database connection
-def get_db_connection():
-    connection = mysql.connector.connect(
-        host='localhost',
-        user='root',
-        password='',
-        database='kp03_db'
-    )
-    return connection
 
 # Routes
 @app.route('/')
