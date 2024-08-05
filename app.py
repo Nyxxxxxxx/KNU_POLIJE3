@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, redirect, url_for, session
 import mysql.connector
 from datetime import datetime
+from backend.registerController import register_student
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
@@ -11,7 +12,7 @@ def get_db_connection():
         host='localhost',
         user='root',
         password='',
-        database='KP03_DB'
+        database='kp03_db'
     )
     return connection
 
@@ -24,16 +25,9 @@ def index():
 def register():
     if request.method == 'POST':
         name = request.form['name']
-        fingerprint_data = request.form['fingerprint_data']
-        face_data = request.form['face_data']
-
-        connection = get_db_connection()
-        cursor = connection.cursor()
-        cursor.execute('INSERT INTO students (name, fingerprint_data, face_data) VALUES (%s, %s, %s)', 
-                       (name, fingerprint_data, face_data))
-        connection.commit()
-        cursor.close()
-        connection.close()
+        school_id = request.form['school_id']
+        phone_number = request.form['phone_number']
+        register_student(name, school_id, phone_number)
         return redirect(url_for('index'))
     return render_template('register.html')
 
