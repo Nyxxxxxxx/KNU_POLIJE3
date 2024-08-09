@@ -1,0 +1,186 @@
+.smart-dashboard-body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+.smart-dashboard-container {
+    display: flex;
+}
+
+.smart-dashboard-sidebar {
+    border-radius: 15px;
+    width: 250px;
+    background-color: white;
+    color: #ecf0f1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* 메뉴를 상단에 배치 */
+    padding: 20px;
+    min-height: 100vh;
+    margin-top: 25vh; /* 위쪽 30% 여백 추가 */
+    
+}
+
+
+.smart-dashboard-logo h2 {
+    margin: 0;
+    color: black;
+}
+
+.smart-dashboard-check-in-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 10px 0;
+}
+
+nav ul li a {
+    color: #ecf0f1;
+    text-decoration: none;
+}
+
+.smart-dashboard-active {
+    font-weight: bold;
+}
+
+.smart-dashboard-main {
+    flex: 1;
+    padding: 20px;
+}
+
+.smart-dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ecf0f1;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.smart-dashboard-user-info {
+    display: flex;
+    align-items: center;
+}
+
+.smart-dashboard-notification-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.smart-dashboard-cards {
+    display: flex;
+    
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.smart-dashboard-students-summary,
+.smart-dashboard-attendance-summary {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 48%;
+}
+
+.smart-dashboard-students-info div {
+    margin-bottom: 10px;
+}
+
+.smart-dashboard-attendance-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.attendance-card {
+    flex: 1 1 calc(50% - 10px);
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.rectangle-3 {
+    border-color: #0f67b1;
+}
+
+.rectangle-4 {
+    border-color: #ff6b6b;
+}
+
+.rectangle-5 {
+    border-color: #3fa2f6;
+}
+
+.rectangle-6 {
+    border-color: #96c9f4;
+}
+
+.smart-dashboard-attendance-overview {
+    margin-top: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+
+.smart-dashboard-check-in-btn {
+    position: absolute;
+    width: 258px;
+    height: 141px;
+    top: 76px;
+    left: 0;
+    background-color: #ffffff;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.smart-dashboard-check-in-btn img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.smart-dashboard-check-in-btn span {
+    color: #3498db;
+    font-weight: bold;
+    text-align: center;
+}

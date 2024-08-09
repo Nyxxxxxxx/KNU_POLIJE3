@@ -1,27 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-</head>
-<body>
-    <h1>Dashboard</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Time</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for record in attendance_records %}
-            <tr>
-                <td>{{ record[2] }}</td>
-                <td>{{ record[3] }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <a href="{{ url_for('index') }}">Back to Home</a>
-</body>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard_style.css') }}" />
+  </head>
+  <body>
+    <div class="desktop">
+      <div class="overlap-wrapper">
+        <div class="overlap">
+          <div class="rectangle"></div>
+          <div class="div"></div>
+          <div class="text-wrapper">Dashboard</div>
+          <div class="text-wrapper-2">Attendance overview</div>
+          <div class="rectangle-2"></div>
+          <div class="text-wrapper-3">Attendance</div>
+          <div class="text-wrapper-4">Students</div>
+          <div class="text-wrapper-5">Summary</div>
+          <div class="rectangle-3"></div>
+          <div class="rectangle-4"></div>
+          <div class="rectangle-5"></div>
+          <div class="rectangle-6"></div>
+          <div class="text-wrapper-6">Early Leaves</div>
+          <div class="rectangle-7"></div>
+          <div class="text-wrapper-7">Late in</div>
+          <div class="text-wrapper-8">Leaves</div>
+          <div class="text-wrapper-9">Absents</div>
+          <div class="text-wrapper-10">1</div>
+          <div class="text-wrapper-11">1</div>
+          <div class="text-wrapper-12">1</div>
+          <div class="text-wrapper-13">1</div>
+          <img class="back" src="{{ url_for('static', filename='img/back.png') }}" />
+          <img class="group" src="{{ url_for('static', filename='img/group-8.png') }}" />
+          <div class="menu"></div>
+          <div class="menu-2"></div>
+          <div class="high-light"></div>
+          <div class="group-2">
+            <img class="vector" src="{{ url_for('static', filename='img/vector-3.svg') }}" />
+            <img class="dashboard" src="{{ url_for('static', filename='img/dashboard.png') }}" />
+          </div>
+          <div class="text-wrapper-14">Smart-A</div>
+          <div class="text-wrapper-15">Check In</div>
+          <img class="img" src="{{ url_for('static', filename='img/vector-4.svg') }}" />
+          <div class="text-wrapper-16">Hi, Eza!</div>
+          <div class="group-3">
+            <img class="students" src="{{ url_for('static', filename='img/students.png') }}" />
+            <img class="vector-2" src="{{ url_for('static', filename='img/image.svg') }}" />
+          </div>
+          <img class="group-4" src="{{ url_for('static', filename='img/group.png') }}" />
+          <div class="overlap-group-wrapper">
+            <div class="overlap-group">
+              <div class="rectangle-8"></div>
+              <div class="text-wrapper-17">Information Management</div>
+              <div class="text-wrapper-18">250</div>
+              <img class="vector-3" src="{{ url_for('static', filename='img/vector-7.svg') }}" />
+            </div>
+          </div>
+          <div class="div-wrapper">
+            <div class="overlap-2">
+              <div class="rectangle-9"></div>
+              <div class="text-wrapper-19">Information Technology</div>
+              <div class="text-wrapper-20">250</div>
+              <img class="vector-4" src="{{ url_for('static', filename='img/vector-2.svg') }}" />
+            </div>
+          </div>
+          <div class="group-5">
+            <div class="overlap-3">
+              <div class="rectangle-10"></div>
+              <div class="text-wrapper-21">Computer Technique</div>
+              <div class="text-wrapper-22">250</div>
+              <img class="vector-5" src="{{ url_for('static', filename='img/vector-5.svg') }}" />
+            </div>
+          </div>
+          <div class="group-6">
+            <div class="overlap-4">
+              <div class="rectangle-11"></div>
+              <div class="text-wrapper-23">250</div>
+              <div class="text-wrapper-24">Digital Business</div>
+              <img class="vector-6" src="{{ url_for('static', filename='img/vector.svg') }}" />
+            </div>
+          </div>
+          <div class="ellipse"></div>
+          <img class="streamline-user" src="{{ url_for('static', filename='img/streamline-user-profile-focus-solid.svg') }}" />
+          <div class="text-wrapper-25">Total Students</div>
+          <div class="text-wrapper-26">1000</div>
+          <img class="mingcute-group" src="{{ url_for('static', filename='img/mingcute-group-3-fill.svg') }}" />
+          <div class="group-7">
+            <div class="overlap-5">
+              <div class="text-wrapper-27">search...</div>
+              <img class="vector-7" src="{{ url_for('static', filename='img/vector-6.svg') }}" />
+            </div>
+          </div>
+          <img class="mdi-filter-outline" src="{{ url_for('static', filename='img/mdi-filter-outline.svg') }}" />
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
