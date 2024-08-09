@@ -10,7 +10,23 @@ app.secret_key = 'your_secret_key'
 # Routes
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('home.html')
+
+@app.route('/dash')
+def dash():
+    return render_template('dash.html')
+
+@app.route('/board')
+def board():
+    return redirect(url_for('dash'))
+
+@app.route('/attendance_student')
+def attendance_student():
+    return render_template('attendance_student.html')
+
+@app.route('/attendance')
+def attendance():
+    return redirect(url_for('attendance_student'))
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():

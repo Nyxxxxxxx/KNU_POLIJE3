@@ -1,0 +1,127 @@
+.smart-dashboard-body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+.smart-dashboard-container {
+    display: flex;
+}
+
+.smart-dashboard-sidebar {
+    border-radius: 15px;
+    width: 250px;
+    background-color: white;
+    color: #ecf0f1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
+    min-height: 100vh;
+    margin-top: 25vh;
+}
+
+.smart-dashboard-logo h2 {
+    margin: 0;
+    color: black;
+}
+
+.smart-dashboard-check-in-btn {
+    background-color: white;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    position: absolute;
+    width: 258px;
+    height: 141px;
+    top: 76px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.smart-dashboard-check-in-btn img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.smart-dashboard-check-in-btn span {
+    color: #3498db;
+    font-weight: bold;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 10px 0;
+}
+
+nav ul li a {
+    color: #ecf0f1;
+    text-decoration: none;
+}
+
+.smart-dashboard-active {
+    font-weight: bold;
+}
+
+.smart-dashboard-main {
+    flex: 1;
+    padding: 20px;
+}
+
+.smart-dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ecf0f1;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.smart-dashboard-user-info {
+    display: flex;
+    align-items: center;
+}
+
+.smart-dashboard-notification-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.smart-dashboard-attendance-overview {
+    margin-top: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
