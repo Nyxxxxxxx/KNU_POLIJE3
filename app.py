@@ -3,6 +3,7 @@ import mysql.connector
 from datetime import datetime
 from backend.registerController import register_student
 from database import get_db_connection
+from backend.dashboardController import get_students_data
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
@@ -10,7 +11,7 @@ app.secret_key = 'your_secret_key'
 # Routes
 @app.route('/')
 def index():
-    return render_template('home.html')
+    return render_template('register_finger.html')
 
 @app.route('/dash')
 def dash():
@@ -22,7 +23,8 @@ def board():
 
 @app.route('/attendance_student')
 def attendance_student():
-    return render_template('attendance_student.html')
+    students_data = get_students_data()
+    return render_template('attendance_student.html', attendance_records=students_data)
 
 @app.route('/attendance')
 def attendance():

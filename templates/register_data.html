@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+            position: relative;
+        }
+        .container h2 {
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        .container p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        .container input[type="text"],
+        .container select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        .container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        .container button:hover {
+            background-color: #0056b3;
+        }
+        .container .footer {
+            margin-top: 10px;
+        }
+        .container .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .container .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Register</h2>
+        <p>Make your account</p>
+        <form>
+            <input type="text" placeholder="Full name" required>
+            <select required>
+                <option value="" disabled selected>Select department</option>
+                <option value="Information Technology">Information Technology</option>
+                <option value="Information Management">Information Management</option>
+                <option value="Computer Engineering">Computer Engineering</option>
+                <option value="Digital Business">Digital Business</option>
+            </select>
+            <input type="text" placeholder="Student ID" required>
+            <input type="text" placeholder="Phone Number" required>
+            <button type="submit">Next</button>
+        </form>
+        <div class="footer">
+            <p>Already have an account? <a href="#">Check in</a></p>
+        </div>
+    </div>
+</body>
+</html>

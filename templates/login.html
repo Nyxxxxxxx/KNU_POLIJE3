@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #E6F7FF, #B3E0FF);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .logos {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .logos img {
+            width: 50px;
+            margin: 0 10px;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 300px;
+        }
+        .container h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .container .input-group {
+            margin-bottom: 15px;
+            position: relative;
+        }
+        .container .input-group input {
+            width: 100%;
+            padding: 10px;
+            padding-left: 40px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        .container .input-group img {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+        }
+        .container button {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .container button:hover {
+            background-color: #0056b3;
+        }
+        .container a {
+            display: block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #007BFF;
+            font-size: 12px;
+        }
+        .container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="logos">
+        <img src="static/img/KNU_logo_png-300x300.png" alt="KNU">
+        <img src="static/img/Logo-polije-png.png" alt="Logo 3">
+    </div>
+    <div class="container">
+        <h1>Sign in</h1>
+        <div class="input-group">
+            <img src="static/img/649370.png" alt="ID Icon">
+            <input type="text" placeholder="ID">
+        </div>
+        <div class="input-group">
+            <img src="static/img/OIP-removebg-preview (1).png" alt="Password Icon">
+            <input type="password" placeholder="password">
+        </div>
+        <button>Login</button>
+        <a href="#">forgot password?</a>
+    </div>
+</body>
+</html>
