@@ -790,4 +790,128 @@
     top: 620px;
     left: 1379px;
   }
+
+
+  .confirm-button-container {
+    position: relative;
+    width: 211px;
+    height: 65px;
+    top: 654px;
+    left: 625px;
+  }
+  .confirm-button {
+    background-color: #18161619; /* 배경 */
+    color: rgb(18, 16, 16); /* 흰색 텍스트 */
+    padding: 15px 30px; /* 버튼 안쪽 여백 */
+    border: none; /* 테두리 없음 */
+    border-radius: 5px; /* 모서리 둥글게 */
+    cursor: pointer; /* 마우스를 올렸을 때 포인터로 변경 */
+    font-size: 16px; /* 글꼴 크기 */
+    font-weight: bold; /* 글자 굵게 */
+    position: absolute;
+    bottom: 40px; /* 하단에서의 위치 */
+    left: 50%; /* 좌우 중앙 정렬 */
+    transform: translateX(-50%); /* 좌우 중앙 정렬 보정 */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 버튼 그림자 */
+    transition: background-color 0.3s ease; /* 배경색 전환 애니메이션 */
+}
+
+.confirm-button:hover {
+    background-color: #00000076; /* 호버 시 배경색 진하게 */
+}
   
+
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.rectangle-10 {
+  width: 600px;
+  height: 350px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  position: relative;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 중앙에 위치하도록 조정 */
+.rectangle-10 {
+  margin: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+
+.text-wrapper-26 {
+  font-family: "Poppins-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 32px;
+  margin-bottom: 5px;
+}
+
+.text-wrapper-29 {
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #656565;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.icon-park-face, .ion-finger-print {
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+}
+
+.text-wrapper-27, .text-wrapper-28 {
+  font-family: "Poppins-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 20px;
+  text-align: center;
+}
+
+.iconoir-cancel {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.confirm-button-container {
+  position: relative;
+  width: 211px;
+  height: 65px;
+  top: 654px;
+  left: 625px;
+}
