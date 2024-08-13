@@ -11,14 +11,14 @@
     <div class="smart-dashboard-container">
         <aside class="smart-dashboard-sidebar">
             <div class="smart-dashboard-logo">
-                <div class="smart-dashboard-check-in-btn">
+                <div class="smart-dashboard-check-in-btn" id="registerButton">
                     <img src="{{ url_for('static', filename='img/checkin.png') }}" alt="Check-In Icon">
-                    <span>Check-In</span>
+                    <span>Register</span>
                 </div>
             </div>
             <nav>
                 <ul>
-                    <li><a href="{{ url_for('board') }}" class="smart-dashboard-active">Dashboard</a></li>
+                    <li><a href="{{ url_for('dash') }}" class="smart-dashboard-active">Dashboard</a></li>
                     <li><a href="#">Students</a></li>
                 </ul>
             </nav>
@@ -61,3 +61,9 @@
     </div>
 </body>
 </html>
+
+<script>
+    document.getElementById('registerButton').addEventListener('click', function() {
+        window.location.href = "{{ url_for('register_student_route') }}";
+    });
+</script>

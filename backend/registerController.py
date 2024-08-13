@@ -10,11 +10,18 @@ def get_db_connection():
     )
     return connection
 
-def register_student(name, school_id, phone_number):
+def register_student(name, student_id, phone_number, department):
     connection = get_db_connection()
     cursor = connection.cursor()
-    cursor.execute('INSERT INTO students (name, school_id, phone_number) VALUES (%s, %s, %s)', 
-                   (name, school_id, phone_number))
-    connection.commit()
-    cursor.close()
-    connection.close()
+    try:
+        cursor.execute(
+            'INSERT INTO students (student_id, name, phone_number, department) VALUES (%s, %s, %s, %s)', 
+            (student_id, name, phone_number, department)
+        )
+        connection.commit()
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+        connection.rollback()
+    finally:
+        cursor.close()
+        connection.close()
