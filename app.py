@@ -32,7 +32,7 @@ def attendance():
 def register():
     if request.method == 'POST':
         name = request.form['name']
-        school_id = request.form['school_id']
+        school_id = request.form['school_id'] 
         phone_number = request.form['phone_number']
         register_student(name, school_id, phone_number)
         return redirect(url_for('index'))

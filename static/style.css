@@ -225,6 +225,8 @@
     font-size: 24px;
     letter-spacing: 0;
     line-height: normal;
+    text-decoration-line : none;
+    
   }
   
   .desktop .text-wrapper-6 {
@@ -237,6 +239,7 @@
     font-size: 24px;
     letter-spacing: 0;
     line-height: normal;
+    text-decoration-line : none;
   }
   
   .desktop .text-wrapper-7 {
@@ -249,6 +252,7 @@
     font-size: 24px;
     letter-spacing: 0;
     line-height: normal;
+    text-decoration-line : none;
   }
   
   .desktop .text-wrapper-8 {
@@ -408,4 +412,71 @@
     background-color: #0f67b1;
     border-radius: 67px;
   }
+  
+  .footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    width: 96.3%;
+    margin: 0 auto; /* 가운데 정렬을 위해 자동으로 양쪽 마진 설정 */
+  }
+  
+  .footer-content {
+    max-width: 1200px; /* .desktop의 width와 동일하게 설정 */
+    margin: 0 auto;
+  }
+  
+  .footer p {
+    margin: 5px 0;
+  }
+  
+  .social-media a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+  }
+  
+  .social-media a:hover {
+    text-decoration: underline;
+  }
+
+
+  .school-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px; /* 필요한 경우 조정 가능 */
+    position: absolute; /* 필요시 위치 조정 가능 */
+    bottom: 80px; /* overlap-group 내 위치 조정 */
+    left: 50%; /* 가운데 정렬 */
+    transform: translateX(-50%);
+  }
+  
+  .logos {
+    position: absolute;
+    top: -120px; /* 필요한 경우 조정 가능 */
+    display: flex;
+    gap: 10%;
+    left: 11%; /* 가운데 정렬 */
+    
+  }
+
+  .school-logos span {
+    font-size: 4em;
+    margin-right: 10px;
+    text-align: center;
+  }
+  
+  .school-logo1 {
+    height: 120px;
+    margin: 5px;
+  }
+  
+  .school-logo2 {
+    height: 80px;
+    margin: 23px;
+  }
+  
+  
   

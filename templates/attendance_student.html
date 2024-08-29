@@ -3,32 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Students Attendance</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='register_student.css') }}">
 </head>
 <body class="smart-dashboard-body">
-    <h2>Smart-A</h2>
+    <h2 style="margin-left: 6%;">Smart-A</h2>
     <div class="smart-dashboard-container">
         <aside class="smart-dashboard-sidebar">
             <div class="smart-dashboard-logo">
                 <div class="smart-dashboard-check-in-btn">
                     <img src="{{ url_for('static', filename='img/checkin.png') }}" alt="Check-In Icon">
-                    <span>Check-In</span>
+                    <span>Register</span>
                 </div>
             </div>
             <nav>
-                <ul>
-                    <li><a href="{{ url_for('board') }}" class="smart-dashboard-active">Dashboard</a></li>
-                    <li><a href="#">Students</a></li>
+                <ul class="menu-list">
+                    <li class="menu-item">
+                        <img src="{{ url_for('static', filename='img/catalog.png') }}" alt="Dashboard Icon" class="menu-icon">
+                        <a href="{{ url_for('board') }}" class = "menu-link2">Dashboard</a>
+
+                    </li>
+                </ul>
+                <ul class="menu-list">
+                    <li class="menu-item">
+                        <img src="{{ url_for('static', filename='img/studenticon.png') }}" alt="Student Icon" class="menu-icon">
+                        <a href="#" class = "menu-link1">Students</a>
+                    </li>
                 </ul>
             </nav>
         </aside>
+
         <main class="smart-dashboard-main">
             <header class="smart-dashboard-header">
-                <h1>Dashboard</h1>
+                <h1>Students</h1>
                 <div class="smart-dashboard-user-info">
-                    <span>Hi, {{ user_name }}!</span>
-                    <button class="smart-dashboard-notification-btn">🔔</button>
+                    <button class="smart-dashboard-notification-btn">
+                        <img src="{{ url_for('static', filename='img/bell.png') }}" alt="Bell Icon" class="menu-icon">
+                        <img src="{{ url_for('static', filename='img/info.png') }}" alt="Info Icon" class="menu-icon2">
+                    </button>
+                    <span>Hi, Student!</span>
                 </div>
             </header>
             
@@ -57,9 +70,38 @@
                         </tr>
                         {% endfor %}
                     </tbody>
+                    <!-- <div class="modal-container" id="checkInModal" style="display:none;">
+                        <div class="rectangle-10">
+                            <div class="text-wrapper-26">CHECK IN</div>
+                            <div class="text-wrapper-29">Choose method</div>
+                            <div class="icon-container">
+                                <div class="icon">
+                                    <img class="icon-park-face" src="../static/img/facerecognize_icon.png" alt="Face Recognition">
+                                    <div class="text-wrapper-27">Face Recognition</div>
+                                </div>
+                                <div class="icon">
+                                    <img class="ion-finger-print" src="../static/img/fingerprint.png" alt="Finger Print">
+                                    <div class="text-wrapper-28">Finger Print</div>
+                                </div>
+                            </div>
+                            <input type="button" value="Confirm" class="confirm-button">
+                            <img class="iconoir-cancel" src="../static/img/closemark.png" onclick="closeModal()" alt="Close">
+                        </div>
+                    </div> -->
                 </table>
             </section>
         </main>
     </div>
 </body>
+
+<!-- <script>
+    document.querySelector('.smart-dashboard-check-in-btn').addEventListener('click', function() {
+        document.getElementById('checkInModal').style.display = 'block';
+    });
+
+    function closeModal() {
+        document.getElementById('checkInModal').style.display = 'none';
+    }
+</script> -->
+
 </html>
