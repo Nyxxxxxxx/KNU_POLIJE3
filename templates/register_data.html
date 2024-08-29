@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link href="{{ url_for('static', filename='register_data.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2>Register</h2>
+        <p>Make your account</p>
+        <form action="{{ url_for('register_student_route') }}" method="POST">
+            <input type="text" name="name" placeholder="Full name" required>
+            <select name="department" required>
+                <option value="" disabled selected>Select department</option>
+                <option value="Information Technology">Information Technology</option>
+                <option value="Information Management">Information Management</option>
+                <option value="Computer Engineering">Computer Engineering</option>
+                <option value="Digital Business">Digital Business</option>
+            </select>
+            <input type="text" name="student_id" placeholder="Student ID" required>
+            <input type="text" name="phone_number" placeholder="Phone Number" required>
+            <button type="submit">Next</button>
+        </form>
+        <div class="footer">
+            <p>Already have an account? <a href="#">Check in</a></p>
+        </div>
+    </div>
+</body>
+</html>

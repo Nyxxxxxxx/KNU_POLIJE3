@@ -1,65 +1,93 @@
-from flask import Flask, request, render_template, redirect, url_for, session
+from flask import Flask, request, render_template, redirect, url_for, jsonify, g
 import mysql.connector
+import logging
 from datetime import datetime
 from backend.registerController import register_student
 from database import get_db_connection
+from backend.dashboardController import get_students_data, get_register_login_data, get_attendance_summary, get_students_summary
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
+logging.basicConfig(level=logging.DEBUG)
+
+# Variabel global untuk menyimpan student_id dan mode fingerprint
+student_id_global = None
+fingerprint_mode = None
 
 # Routes
 @app.route('/')
 def index():
     return render_template('home.html')
 
-@app.route('/dash')
+@app.route('/dashboard')
 def dash():
-    return render_template('dash.html')
+    global fingerprint_mode
+    fingerprint_mode = "register_login"
+    logging.debug(f"Fingerprint_mode: {fingerprint_mode}")
 
-@app.route('/board')
-def board():
-    return redirect(url_for('dash'))
+    register_login_data = get_register_login_data()
+    students_summary = get_students_summary()
+    attendance_summary = get_attendance_summary()
+
+    return render_template('dash.html', 
+                           register_login_data=register_login_data,
+                           students_summary=students_summary,
+                           attendance_summary=attendance_summary)
+
 
 @app.route('/attendance_student')
 def attendance_student():
-    return render_template('attendance_student.html')
+    students_data = get_students_data()
+    return render_template('attendance_student.html', attendance_records=students_data)
 
 @app.route('/attendance')
 def attendance():
     return redirect(url_for('attendance_student'))
 
 @app.route('/register', methods=['GET', 'POST'])
-def register():
+def register_student_route():
     if request.method == 'POST':
         name = request.form['name']
-        school_id = request.form['school_id'] 
+        student_id = request.form['student_id']
         phone_number = request.form['phone_number']
-        register_student(name, school_id, phone_number)
-        return redirect(url_for('index'))
-    return render_template('register.html')
+        department = request.form['department']
+        
+        register_student(name, student_id, phone_number, department)
+        
+        # Redirect to fingerprint registration page with student_id as a query parameter
+        return redirect(url_for('register_finger_route', student_id=student_id))
+    return render_template('register_data.html')
 
-@app.route('/recognize', methods=['GET', 'POST'])
-def recognize():
-    if request.method == 'POST':
-        fingerprint_data = request.form['fingerprint_data']
-        face_data = request.form['face_data']
+@app.route('/register_finger')
+def register_finger_route():
+    global student_id_global, fingerprint_mode
+    student_id = request.args.get('student_id')
+    if student_id:
+        student_id_global = student_id  # Simpan student_id di variabel global
+        fingerprint_mode = "register"
+        logging.debug(f"Fingerprint_mode: {fingerprint_mode}")
+        logging.debug(f"Received student_id: {student_id} for fingerprint registration")
+    return render_template('register_finger.html', student_id=student_id)
 
-        connection = get_db_connection()
-        cursor = connection.cursor()
-        cursor.execute('SELECT id FROM students WHERE fingerprint_data = %s OR face_data = %s', 
-                       (fingerprint_data, face_data))
-        student = cursor.fetchone()
-        if student:
-            student_id = student[0]
-            cursor.execute('INSERT INTO attendance (student_id, date, time) VALUES (%s, %s, %s)', 
-                           (student_id, datetime.now().date(), datetime.now().time()))
-            connection.commit()
-            cursor.close()
-            connection.close()
-            return redirect(url_for('dashboard', student_id=student_id))
-        cursor.close()
-        connection.close()
-    return render_template('recognize.html')
+@app.route('/start_fingerprint_registration', methods=['GET'])
+def start_fingerprint_registration():
+    global student_id_global
+    if student_id_global:
+        logging.debug(f"Sending student_id {student_id_global} to Arduino")
+        return jsonify({'student_id': student_id_global})
+    else:
+        logging.debug(f"Failed to get student_id in /start_fingerprint_registration. URL parameters: {request.args}")
+        return jsonify({'status': 'error', 'message': 'No student_id found'})
+
+@app.route('/get_fingerprint_mode', methods=['GET'])
+def get_fingerprint_mode():
+    global fingerprint_mode
+    if fingerprint_mode:
+        logging.debug(f"Sending fingerprint_mode: {fingerprint_mode} to Arduino")
+        return jsonify({'fingerprint_mode': fingerprint_mode})
+    else:
+        logging.debug("Fingerprint mode not set")
+        return jsonify({'status': 'error', 'message': 'Fingerprint mode not set'})
 
 @app.route('/dashboard/<int:student_id>')
 def dashboard(student_id):
@@ -72,4 +100,4 @@ def dashboard(student_id):
     return render_template('dashboard.html', attendance_records=attendance_records)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='192.168.249.63', port=5000)

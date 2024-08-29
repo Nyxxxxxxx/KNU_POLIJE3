@@ -47,44 +47,42 @@
                 <div class="smart-dashboard-students-summary">
                     <h2>Students</h2>
                     <div class="smart-dashboard-students-info">
-                        <div>Information Technology: <span>250</span></div>
-                        <div>Information Management: <span>250</span></div>
-                        <div>Computer Technique: <span>250</span></div>
-                        <div>Digital Business: <span>250</span></div>
-                        <div>Total Students: <span>1000</span></div>
+                        {% for summary in students_summary %}
+                        <div>{{ summary.department }}: <span>{{ summary.total_students }}</span></div>
+                        {% endfor %}
+                        <div>Total Students: <span>{{ students_summary | sum(attribute='total_students') }}</span></div>
                     </div>
                 </div>
                 <div class="smart-dashboard-attendance-summary">
                     <h2>Attendance Summary</h2>
                     <div class="smart-dashboard-attendance-info">
-                        <div class="attendance-card rectangle-3">Early Leaves: <span>1</span></div>
-                        <div class="attendance-card rectangle-4">Absents: <span>1</span></div>
-                        <div class="attendance-card rectangle-5">Late in: <span>1</span></div>
-                        <div class="attendance-card rectangle-6">Leaves: <span>1</span></div>
+                        <div class="attendance-card rectangle-3">Attend: <span>{{ attendance_summary.total_attendance }}</span></div>
+                        <div class="attendance-card rectangle-4">Absents: <span>0</span></div>
+                        <div class="attendance-card rectangle-5">Late in: <span>0</span></div>
+                        <div class="attendance-card rectangle-6">Leaves: <span>0</span></div>
                     </div>
                 </div>
             </section>
             <section class="smart-dashboard-attendance-overview">
                 <h2>Attendance Overview</h2>
+                <button id="checkPictureBtn" class="smart-dashboard-btn" style="margin-bottom: 20px;">Check Picture</button>
                 <table>
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Employee</th>
+                            <th>No</th>
+                            <th>Student ID</th>
+                            <th>Name</th>
                             <th>Department</th>
-                            <th>Role</th>
-                            <th>Date</th>
                             <th>Check-in</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for record in attendance_records %}
+                        {% for record in register_login_data %}
                         <tr>
-                            <td>{{ record.id }}</td>
-                            <td>{{ record.employee }}</td>
+                            <td>{{ record.no }}</td>
+                            <td>{{ record.student_id }}</td>
+                            <td>{{ record.name }}</td>
                             <td>{{ record.department }}</td>
-                            <td>{{ record.role }}</td>
-                            <td>{{ record.date }}</td>
                             <td>{{ record.check_in }}</td>
                         </tr>
                         {% endfor %}
@@ -116,6 +114,11 @@
 
 
 <script>
+    document.getElementById('checkPictureBtn').addEventListener('click', function() {
+        window.open('http://localhost/esp32cam_gallery/view_images.php', '_blank');
+    });
+
+
     document.querySelector('.smart-dashboard-check-in-btn').addEventListener('click', function() {
         document.getElementById('checkInModal').style.display = 'block';
     });

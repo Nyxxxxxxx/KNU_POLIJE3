@@ -11,7 +11,7 @@
     <div class="smart-dashboard-container">
         <aside class="smart-dashboard-sidebar">
             <div class="smart-dashboard-logo">
-                <div class="smart-dashboard-check-in-btn">
+                <div class="smart-dashboard-check-in-btn" id="registerButton">
                     <img src="{{ url_for('static', filename='img/checkin.png') }}" alt="Check-In Icon">
                     <span>Register</span>
                 </div>
@@ -20,7 +20,9 @@
                 <ul class="menu-list">
                     <li class="menu-item">
                         <img src="{{ url_for('static', filename='img/catalog.png') }}" alt="Dashboard Icon" class="menu-icon">
-                        <a href="{{ url_for('board') }}" class = "menu-link2">Dashboard</a>
+
+                        <a href="{{ url_for('dash') }}" class = "menu-link2">Dashboard</a>
+
 
                     </li>
                 </ul>
@@ -53,20 +55,18 @@
                             <th>No</th>
                             <th>Student ID</th>
                             <th>Name</th>
+                            <th>Phone Number</th>
                             <th>Department</th>
-                            <th>Role</th>
-                            <th>Check-in</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for record in attendance_records %}
                         <tr>
-                            <td>{{ record.id }}</td>
-                            <td>{{ record.employee }}</td>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ record.student_id }}</td>
+                            <td>{{ record.name }}</td>
+                            <td>{{ record.phone_number }}</td>
                             <td>{{ record.department }}</td>
-                            <td>{{ record.role }}</td>
-                            <td>{{ record.date }}</td>
-                            <td>{{ record.check_in }}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -105,3 +105,9 @@
 </script> -->
 
 </html>
+
+<script>
+    document.getElementById('registerButton').addEventListener('click', function() {
+        window.location.href = "{{ url_for('register_student_route') }}";
+    });
+</script>
