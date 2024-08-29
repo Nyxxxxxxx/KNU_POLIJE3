@@ -18,6 +18,8 @@
         </p>
         <!-- Menampilkan student_id untuk referensi atau debug -->
         <p id="studentIdDisplay"></p>
+<!-- Tambahkan tombol Finish -->
+        <button id="finishButton" class="modern-button">Finish</button>
     </div>
 
     <script type="text/javascript">
@@ -32,7 +34,15 @@
         } else {
             console.error("No student_id found in URL");
         }
+
+        // JavaScript untuk redirect ke dashboard ketika tombol Finish diklik
+document.getElementById("finishButton").addEventListener("click", function() {
+    window.location.href = "/dashboard";
+});
+
     </script>
     
 </body>
 </html>
+
+

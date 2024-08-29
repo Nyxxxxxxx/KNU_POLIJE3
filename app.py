@@ -4,7 +4,7 @@ import logging
 from datetime import datetime
 from backend.registerController import register_student
 from database import get_db_connection
-from backend.dashboardController import get_students_data
+from backend.dashboardController import get_students_data, get_register_login_data, get_attendance_summary, get_students_summary
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
@@ -22,9 +22,18 @@ def index():
 @app.route('/dashboard')
 def dash():
     global fingerprint_mode
-    fingerprint_mode = "login"
+    fingerprint_mode = "register_login"
     logging.debug(f"Fingerprint_mode: {fingerprint_mode}")
-    return render_template('dash.html')
+
+    register_login_data = get_register_login_data()
+    students_summary = get_students_summary()
+    attendance_summary = get_attendance_summary()
+
+    return render_template('dash.html', 
+                           register_login_data=register_login_data,
+                           students_summary=students_summary,
+                           attendance_summary=attendance_summary)
+
 
 @app.route('/attendance_student')
 def attendance_student():
@@ -91,4 +100,4 @@ def dashboard(student_id):
     return render_template('dashboard.html', attendance_records=attendance_records)
 
 if __name__ == '__main__':
-    app.run(debug=True, host='10.10.7.210', port=5000)
+    app.run(debug=True, host='192.168.249.63', port=5000)

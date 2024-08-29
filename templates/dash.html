@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='dashstyle.css') }}">
 </head>
 <body class="smart-dashboard-body">
-    <h2>Smart-A</h2>
+    <h2 style="margin-left: 6%;">Smart-A</h2>
     <div class="smart-dashboard-container">
         <aside class="smart-dashboard-sidebar">
             <div class="smart-dashboard-logo">
@@ -17,9 +17,18 @@
                 </div>
             </div>
             <nav>
-                <ul>
-                    <li><a href="#" class="smart-dashboard-active">Dashboard</a></li>
-                    <li><a href="{{ url_for('attendance') }}">Students</a></li>
+                <ul class="menu-list">
+                    <li class="menu-item">
+                        <img src="{{ url_for('static', filename='img/catalog.png') }}" alt="Dashboard Icon" class="menu-icon">
+                        <a href="#" class="menu-link1">Dashboard</a>
+                    </li>
+                </ul>
+                <ul class="menu-list">
+                    <li class="menu-item">
+                        <img src="{{ url_for('static', filename='img/studenticon.png') }}" alt="Student Icon" class="menu-icon">
+                        <a href="{{ url_for('attendance') }}" class="menu-link2">Students</a>
+
+                    </li>
                 </ul>
             </nav>
         </aside>
@@ -27,59 +36,95 @@
             <header class="smart-dashboard-header">
                 <h1>Dashboard</h1>
                 <div class="smart-dashboard-user-info">
-                    <span>Hi, {{ user_name }}!</span>
-                    <button class="smart-dashboard-notification-btn">🔔</button>
+                        <button class="smart-dashboard-notification-btn">
+                            <img src="{{ url_for('static', filename='img/bell.png') }}" alt="Bell Icon" class="menu-icon">
+                            <img src="{{ url_for('static', filename='img/info.png') }}" alt="Info Icon" class="menu-icon2">
+                        </button>
+                        <span>Hi, Student!</span>
                 </div>
             </header>
             <section class="smart-dashboard-cards">
                 <div class="smart-dashboard-students-summary">
                     <h2>Students</h2>
                     <div class="smart-dashboard-students-info">
-                        <div>Information Technology: <span>250</span></div>
-                        <div>Information Management: <span>250</span></div>
-                        <div>Computer Technique: <span>250</span></div>
-                        <div>Digital Business: <span>250</span></div>
-                        <div>Total Students: <span>1000</span></div>
+                        {% for summary in students_summary %}
+                        <div>{{ summary.department }}: <span>{{ summary.total_students }}</span></div>
+                        {% endfor %}
+                        <div>Total Students: <span>{{ students_summary | sum(attribute='total_students') }}</span></div>
                     </div>
                 </div>
                 <div class="smart-dashboard-attendance-summary">
                     <h2>Attendance Summary</h2>
                     <div class="smart-dashboard-attendance-info">
-                        <div class="attendance-card rectangle-3">Early Leaves: <span>1</span></div>
-                        <div class="attendance-card rectangle-4">Absents: <span>1</span></div>
-                        <div class="attendance-card rectangle-5">Late in: <span>1</span></div>
-                        <div class="attendance-card rectangle-6">Leaves: <span>1</span></div>
+                        <div class="attendance-card rectangle-3">Attend: <span>{{ attendance_summary.total_attendance }}</span></div>
+                        <div class="attendance-card rectangle-4">Absents: <span>0</span></div>
+                        <div class="attendance-card rectangle-5">Late in: <span>0</span></div>
+                        <div class="attendance-card rectangle-6">Leaves: <span>0</span></div>
                     </div>
                 </div>
             </section>
             <section class="smart-dashboard-attendance-overview">
                 <h2>Attendance Overview</h2>
+                <button id="checkPictureBtn" class="smart-dashboard-btn" style="margin-bottom: 20px;">Check Picture</button>
                 <table>
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Employee</th>
+                            <th>No</th>
+                            <th>Student ID</th>
+                            <th>Name</th>
                             <th>Department</th>
-                            <th>Role</th>
-                            <th>Date</th>
                             <th>Check-in</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for record in attendance_records %}
+                        {% for record in register_login_data %}
                         <tr>
-                            <td>{{ record.id }}</td>
-                            <td>{{ record.employee }}</td>
+                            <td>{{ record.no }}</td>
+                            <td>{{ record.student_id }}</td>
+                            <td>{{ record.name }}</td>
                             <td>{{ record.department }}</td>
-                            <td>{{ record.role }}</td>
-                            <td>{{ record.date }}</td>
                             <td>{{ record.check_in }}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
+                    <div class="modal-container" id="checkInModal" style="display:none;">
+                        <div class="rectangle-10">
+                            <div class="text-wrapper-26">CHECK IN</div>
+                            <div class="text-wrapper-29">Choose method</div>
+                            <div class="icon-container">
+                                <div class="icon">
+                                    <img class="icon-park-face" src="../static/img/facerecognize_icon.png" alt="Face Recognition">
+                                    <div class="text-wrapper-27">Face Recognition</div>
+                                </div>
+                                <div class="icon">
+                                    <img class="ion-finger-print" src="../static/img/fingerprint.png" alt="Finger Print">
+                                    <div class="text-wrapper-28">Finger Print</div>
+                                </div>
+                            </div>
+                            <input type="button" value="Confirm" class="confirm-button">
+                            <img class="iconoir-cancel" src="../static/img/closemark.png" onclick="closeModal()" alt="Close">
+                        </div>
+                    </div>
                 </table>
             </section>
         </main>
     </div>
 </body>
+
+
+
+<script>
+    document.getElementById('checkPictureBtn').addEventListener('click', function() {
+        window.open('http://localhost/esp32cam_gallery/view_images.php', '_blank');
+    });
+
+    document.querySelector('.smart-dashboard-check-in-btn').addEventListener('click', function() {
+        document.getElementById('checkInModal').style.display = 'block';
+    });
+
+    function closeModal() {
+        document.getElementById('checkInModal').style.display = 'none';
+    }
+</script>
+
 </html>
